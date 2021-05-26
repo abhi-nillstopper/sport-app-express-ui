@@ -25,7 +25,7 @@ ul.events-list li {
 ul.events-list header {
   width: 70%;
   height: 200px;
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   border-radius: 4px;
   object-fit: cover;
