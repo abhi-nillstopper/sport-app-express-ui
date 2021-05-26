@@ -247,7 +247,7 @@ export default function Dashboard({ history }) {
                           onClick={() => handleDelete(event._id)}
                         >
                           Delete
-                        </Button>{" "}
+                        </Button>
                       </div>
                     ) : (
                       <></>

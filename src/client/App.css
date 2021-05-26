@@ -14,8 +14,10 @@ body,
 }
 
 body {
-  background: rgba(0, 0, 0, 0.5) url("assets/background.jpg");
+  background-image: url("assets/background.jpg");
   background-size: cover;
+  /* background-attachment: scroll; */
+  /* background-position: center; */
   background-repeat: no-repeat;
 }
 
@@ -54,7 +56,7 @@ button {
   margin-bottom: 30px;
 }
 
-.full-width-btn{
+.full-width-btn {
   border: 0;
   border-radius: 2px;
   width: 100%;
@@ -97,7 +99,7 @@ button {
   cursor: pointer;
 } */
 
-.full-width{
+.full-width {
   width: 100%;
 }
 
