@@ -1,15 +1,19 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Form, Button, Container, Alert } from "react-bootstrap";
 import api from "../../service/api";
 import { UserContext } from "../../user-context";
-import "./login.css"
+import "./login.css";
 
 export default function Login({ history }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const { setIsLoggedIn } = useContext(UserContext);
+  const { isLoggedIn, setIsLoggedIn } = useContext(UserContext);
+
+  useEffect(() => {
+    isLoggedIn && history.push("/");
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

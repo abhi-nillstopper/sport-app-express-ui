@@ -10,15 +10,15 @@ import RejectionController from "./controllers/rejectionController";
 import { verifyToken } from "./middleware/verifyToken";
 
 // import UploadConfig from "./config/upload";
-import UploadConfigS3 from "./config/s3_upload"
+import UploadConfigS3 from "./config/s3_upload";
 
 const routes = express.Router();
 
-//* for local file save in file folder 
+//* for local file save in file folder
 //* const upload = multer(UploadConfig);
 
 //* config for saving file in AWS s3
-const uploadS3 = multer(UploadConfigS3)
+const uploadS3 = multer(UploadConfigS3);
 
 routes.get("/express/status", (req, res) => {
   res.status(200).send({ status: 200 });
@@ -57,13 +57,21 @@ routes.post(
 
 //dashboard
 routes.get("/express/dashboard", verifyToken, DashboardController.getAllEvent);
-routes.get("/express/dashboard/:sport", verifyToken, DashboardController.getAllEvent);
+routes.get(
+  "/express/dashboard/:sport",
+  verifyToken,
+  DashboardController.getAllEvent
+);
 routes.get(
   "/express/user/events",
   verifyToken,
   DashboardController.getAllEventByUserId
 );
-routes.get("/express/event/:eventId", verifyToken, DashboardController.getEventById);
+routes.get(
+  "/express/event/:eventId",
+  verifyToken,
+  DashboardController.getEventById
+);
 
 //Event
 routes.post(
@@ -72,10 +80,19 @@ routes.post(
   uploadS3.single("thumbnail"),
   EventController.createEvent
 );
-routes.delete("/express/event/:eventId", verifyToken, EventController.deleteEventById);
+routes.delete(
+  "/express/event/:eventId",
+  verifyToken,
+  EventController.deleteEventById
+);
 
 //User
 routes.get("/express/user/:userId", UserController.getUserById);
 routes.post("/express/user/register", UserController.createUser);
+
+//default
+routes.get("*", function (req, res) {
+  res.redirect("/");   
+});
 
 export default routes;

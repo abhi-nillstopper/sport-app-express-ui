@@ -17,7 +17,7 @@ if (process.env.NODE_ENV !== "production") {
 
 //socket.io Server
 const io = new ioServer(httpServer, {
-  // cors: { origin: process.env.SPORT_FRONTEND_URL, methods: ["GET", "POST"] },
+  cors: { origin: process.env.SPORT_FRONTEND_URL, methods: ["GET", "POST"] },
 });
 
 io.on("connection", (socket) => {
@@ -46,10 +46,9 @@ app.use((req, res, next) => {
   next();
 });
 
-// app.use(cors({ origin: process.env.SPORT_FRONTEND_URL }));
+app.use(cors({ origin: process.env.SPORT_FRONTEND_URL }));
 app.use(express.json());
 app.use("/files", express.static(path.resolve(__dirname, "..", "files")));
-app.use(routes);
 
 // UI
 app.use(express.static(path.join(__dirname, "..", "build")));
@@ -59,6 +58,8 @@ app.route("/", (req, res) => {
   console.log(path.join(__dirname, "..", "build", "index.html"));
   res.send(express.static(path.join(__dirname, "..", "build", "index.html")));
 });
+
+app.use(routes);
 
 httpServer.listen(PORT, () => {
   console.log(`started listing on ${PORT}`);
