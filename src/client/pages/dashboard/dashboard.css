@@ -43,8 +43,8 @@ ul.events-list header div {
 
 ul.events-list header div svg {
   cursor: pointer;
-  width: 10vh;
-  height: 11vh;
+  width: 5vh;
+  height: 6vh;
 }
 
 ul.events-list li strong:nth-of-type(1) {

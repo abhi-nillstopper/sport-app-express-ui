@@ -12,7 +12,7 @@
   "globals": {
     "browser": true,
     "Atomics": "readonly",
-    "SharedArrayBuffer": "readonly",
+    "SharedArrayBuffer": "readonly"
     // "localStorage": true,
     // "document": true
   },

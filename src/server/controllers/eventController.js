@@ -35,7 +35,7 @@ const EventController = {
   async deleteEventById(req, res) {
     const { eventId } = req.params;
     try {
-      await Event.findByIdAndDelete(eventId);
+      await Event.deleteOne({ _id: eventId });
       return res.status(204).send();
     } catch (error) {
       return res
