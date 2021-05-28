@@ -2,24 +2,27 @@ import React, { useState, useEffect } from "react";
 import moment from "moment";
 import api from "../../service/api";
 import { Button, ButtonGroup, Alert, Container } from "react-bootstrap";
-import "./my_registration.css";
+import "./my_requests.css";
 
-export default function MyRegistrations() {
-  const [myEvents, setMyEvents] = useState([]);
+export default function MyRequests() {
+  const [myRequests, setMyRequests] = useState([]);
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [success, setSuccess] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
 
   useEffect(() => {
-    getMyEvents();
+    getMyRequests();
   }, []);
 
-  const getMyEvents = async () => {
+  const getMyRequests = async () => {
     try {
       const response = await api.get("/express/registration");
-      setMyEvents(response.data);
-    } catch (error) {}
+      setMyRequests(response.data);
+    } catch (error) {
+      setError(true);
+      setErrorMessage(error.response.data.message);
+    }
   };
 
   const isApproved = (approved) =>
@@ -47,7 +50,7 @@ export default function MyRegistrations() {
     setErrorMessage(message);
     setTimeout(() => {
       setError(false);
-      getMyEvents();
+      // getMyRequests();
       //   logout ? logoutHandler() : dropDownHandler();
     }, 2000);
   };
@@ -57,7 +60,7 @@ export default function MyRegistrations() {
     setSuccessMessage(message);
     setTimeout(() => {
       setSuccess(false);
-      getMyEvents();
+      getMyRequests();
     }, 2000);
   };
 
@@ -74,12 +77,11 @@ export default function MyRegistrations() {
         </Alert>
       )}
       <ul className="my-events">
-        {myEvents.map((event) => (
+        {myRequests.map((event) => (
           <li key={event._id}>
             <div>
               <strong>{event.eventTitle}</strong>
             </div>
-            <div className="my-events-details">
               <span>
                 Event Date: {moment(event.eventDate).format("DD,MMM,YY")}
               </span>
@@ -101,7 +103,6 @@ export default function MyRegistrations() {
                     : "Pending"}
                 </span>
               </span>
-            </div>
             <ButtonGroup>
               <Button
                 variant="primary"

@@ -11,7 +11,7 @@ import {
 } from "react-bootstrap";
 import api from "../../service/api";
 import autoBind from "react-autobind";
-import CameraIcon from "../../assets/camera.png";
+import {ReactComponent as CameraIcon} from "../../assets/camera.svg";
 import "./events.css";
 
 //Create Event
@@ -156,11 +156,7 @@ class EventPage extends React.Component {
               className={thumbnail ? "has-thumbnail" : ""}
             >
               <Form.File name="thumbnail" onChange={this.handleOnChange} />
-              <Image
-                src={CameraIcon}
-                style={{ width: "50px" }}
-                alt="upload image"
-              />
+              <CameraIcon/>
             </Form.Label>
           </Form.Group>
           <Form.Group controlId="formBasicTitle">

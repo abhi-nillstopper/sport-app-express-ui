@@ -34,7 +34,7 @@ export default function Login({ history }) {
         localStorage.setItem("user_id", user_id);
         localStorage.setItem("user", user);
         setIsLoggedIn(true);
-        history.push("/dashboard");
+        history.push("/");
       } else {
         const { message } = response.data;
         errorHandler(message);

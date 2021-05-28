@@ -13,28 +13,38 @@ ul.events-list {
   list-style: none;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 20px;
+  grid-gap: 2em;
   margin: auto;
 }
 
 ul.events-list li {
   display: flex;
   flex-direction: column;
-  margin: auto;
+  /* margin: auto; */
+  background-color: #e4e4e4;
+  padding: 1em;
+  border-radius: 1em;
 }
 
 ul.events-list header {
   width: 100%;
-  height: 200px;
+  height: 15em;
   background-size: cover;
   background-repeat: no-repeat;
-  border-radius: 4px;
+  border-radius: 0.3em;
   /* object-fit: cover; */
 }
 
 ul.events-list header div {
+  color: #ff2c2c;
   display: flex;
   flex-direction: row-reverse;
+}
+
+ul.events-list header div svg {
+  cursor: pointer;
+  width: 10vh;
+  height: 11vh;
 }
 
 ul.events-list li strong:nth-of-type(1) {
@@ -43,13 +53,35 @@ ul.events-list li strong:nth-of-type(1) {
   /* color: #444; */
 }
 
-ul.events-list button.btn-primary{
+ul.events-list button.btn-primary {
   width: 100%;
+}
+
+@media (max-width: 1050px) {
+  ul.events-list header {
+    background-size: 100%;
+    height: 11em;
+  }
 }
 
 @media (max-width: 750px) {
   ul.events-list {
     grid-template-columns: 1fr;
+  }
+  ul.events-list header {
+    background-size: 100%;
+    height: 11em;
+  }
+  ul.events-list header div svg {
+    width: 3vh;
+    height: 3vh;
+  }
+}
+
+@media (max-width: 550px) {
+  ul.events-list header {
+    background-size: 100%;
+    height: 6em;
   }
 }
 

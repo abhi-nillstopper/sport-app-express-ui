@@ -11,6 +11,7 @@ import moment from "moment";
 import { io as socketio } from "socket.io-client";
 import "./dashboard.css";
 import api from "../../service/api";
+import {ReactComponent as DeletIcon} from "../../assets/dustbin.svg"
 import { UserContext } from "../../user-context";
 
 //dashboard will shoow all the events
@@ -241,13 +242,14 @@ export default function Dashboard({ history }) {
                   >
                     {event.user === user_id ? (
                       <div>
-                        <Button
+                        <DeletIcon onClick={() => handleDelete(event._id)}/>
+                        {/* <Button
                           size="sm"
                           variant="danger"
                           onClick={() => handleDelete(event._id)}
                         >
                           Delete
-                        </Button>
+                        </Button> */}
                       </div>
                     ) : (
                       <></>

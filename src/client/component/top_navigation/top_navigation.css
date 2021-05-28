@@ -1,4 +1,4 @@
-.top-navigation-bar{
+.top-navigation-bar {
   width: 80%;
 }
 
@@ -7,7 +7,7 @@
 }
 
 .top-navigation-bar span {
-    margin-right: 5px;
+  margin-right: 5px;
 }
 .top-navigation-bar span svg {
   width: 35px;
@@ -24,8 +24,6 @@
   margin-top: auto;
   margin-bottom: auto;
   padding-left: 13px;
-  /* margin-left: 5%; */
-  /* margin-right: 5%; */
 }
 
 .top-navigation-bar .nav-item a {
@@ -35,11 +33,12 @@
   color: rgba(0, 0, 0, 0.7);
 }
 
-/* @media (min-width: 992px) {
+.top-navigation-bar .nav-item .active-nav-link{
+  color: blue;
+}
+
+@media (max-width: 750px) {
   .top-navigation-bar {
-    width: 40%;
+    width: 90%;
   }
-  .navbar-collapse.collapse{
-        margin-left: 57%;
-    }
-} */
+}

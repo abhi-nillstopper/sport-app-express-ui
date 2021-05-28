@@ -36,18 +36,27 @@ routes.post(
 routes.get(
   "/express/registration",
   verifyToken,
-  RegistrationController.getMyRegistration
+  RegistrationController.getMyRequests
 );
 routes.get(
   "/express/registration/:registration_id",
   RegistrationController.getRegistration
 );
+
+//participation
+routes.get(
+  "/express/participation",
+  verifyToken,
+  RegistrationController.getMyParticipation
+);
+
 //approval
 routes.post(
   "/express/registration/:registration_id/approval",
   verifyToken,
   ApprovalController.approval
 );
+
 //rejection
 routes.post(
   "/express/registration/:registration_id/rejection",

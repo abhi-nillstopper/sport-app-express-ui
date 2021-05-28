@@ -4,7 +4,6 @@ const ApprovalController = {
   async approval(req, res) {
     try {
       const { registration_id } = req.params;
-      const { authData } = res.locals;
 
       const registration = await Registration.findById(registration_id);
 

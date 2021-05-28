@@ -1,5 +1,5 @@
 {
     "ignore": ["spec", ".git", "node_modules","public","build"],
-    "watch": ["src"],
+    "watch": ["src/server"],
     "exec": "npm run node-start"
 }

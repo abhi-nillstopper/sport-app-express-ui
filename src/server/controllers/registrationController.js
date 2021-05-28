@@ -38,7 +38,7 @@ const RegistrationController = {
 
       return res.json(registration);
     } catch (err) {
-      // throw Error("error while registration");
+      console.log("error",error)
       return res.status(400).json({ message: "Error while registration" });
     }
   },
@@ -59,10 +59,11 @@ const RegistrationController = {
         return res.status(400).json({ message: "Registration not found" });
       }
     } catch (err) {
+      console.log("error",error)
       return res.status(400).json({ message: "Registration not found" });
     }
   },
-  async getMyRegistration(req, res) {
+  async getMyRequests(req, res) {
     try {
       const {
         authData: {
@@ -71,15 +72,39 @@ const RegistrationController = {
       } = res.locals;
 
       const registrationArr = await Registration.find({
-        owner: user_id,
+        owner: user_id
       });
 
-      if (registrationArr) {
+      if (registrationArr.length > 0) {
         return res.json(registrationArr);
       }
       return res.status(400).json({ message: "Registration not found" });
     } catch (error) {
+      console.log("error",error)
       return res.status(400).json({ message: "Registration not found" });
+    }
+  },
+  async getMyParticipation(req, res) {
+    try {
+      const {
+        authData: {
+          user: { _id: user_id },
+        },
+      } = res.locals;
+
+      const ObjectId = require('mongoose').Types.ObjectId;
+
+      const participationArr = await Registration.find({
+        user: new ObjectId(user_id),
+      });
+
+      if (participationArr.length > 0) {
+        return res.json(participationArr);
+      }
+      return res.status(400).json({ message: "participation not found" });
+    } catch (error) {
+      console.log("error",error)
+      return res.status(400).json({ message: "participation not found" });
     }
   },
 };

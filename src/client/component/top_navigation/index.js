@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Nav, Navbar, Button } from "react-bootstrap";
-import { Link, useHistory } from "react-router-dom";
+import { Link, NavLink, useHistory } from "react-router-dom";
 import { ReactComponent as SportHome } from "../../assets/sports_mode.svg";
 import { UserContext } from "../../user-context";
 import "./top_navigation.css";
@@ -32,13 +32,27 @@ export default function TopNavigation(props) {
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="ml-auto">
                 <Nav.Item>
-                  <Link to="/">Dashboard</Link>
+                  <NavLink activeClassName="active-nav-link" to="/" exact>
+                    Dashboard
+                  </NavLink>
                 </Nav.Item>
                 <Nav.Item>
-                  <Link to="/events">New Event</Link>
+                  <NavLink activeClassName="active-nav-link" to="/events">
+                    New Event
+                  </NavLink>
                 </Nav.Item>
                 <Nav.Item>
-                  <Link to="/myregistration">My Registration</Link>
+                  <NavLink
+                    activeClassName="active-nav-link"
+                    to="/myparticipation"
+                  >
+                    My Participation
+                  </NavLink>
+                </Nav.Item>
+                <Nav.Item>
+                  <NavLink activeClassName="active-nav-link" to="/myrequests">
+                    My Requests
+                  </NavLink>
                 </Nav.Item>
                 <Nav.Item>
                   <Button variant="danger" onClick={handleLogout}>
