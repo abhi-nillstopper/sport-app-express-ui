@@ -16,6 +16,7 @@
 - JWT authentication: User's request will be authenticated by JWT.
 - Event's image will be stored on AWS s3 bucket.
 - Notification for Event registration will be served by Socket.io.
+- Mobile friendly UI.
 
 ## Features
 
