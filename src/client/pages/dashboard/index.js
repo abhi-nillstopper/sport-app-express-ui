@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useMemo, useContext } from "react";
 import {
+  Image,
   Button,
   ButtonGroup,
   Alert,
@@ -237,23 +238,13 @@ export default function Dashboard({ history }) {
             {events.map((event) => {
               return (
                 <li key={event._id}>
-                  <header
-                    style={{ backgroundImage: `url(${event.thumbnail_url})` }}
-                  >
-                    {event.user === user_id ? (
+                  <header>
+                    {event.user === user_id && (
                       <div>
                         <DeletIcon onClick={() => handleDelete(event._id)} />
-                        {/* <Button
-                          size="sm"
-                          variant="danger"
-                          onClick={() => handleDelete(event._id)}
-                        >
-                          Delete
-                        </Button> */}
                       </div>
-                    ) : (
-                      <></>
                     )}
+                    <Image src={event.thumbnail_url}></Image>
                   </header>
                   <strong>{event.title}</strong>
                   <span>
